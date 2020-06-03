@@ -12,21 +12,32 @@ import org.springframework.stereotype.Component;
 @Component
 public class AuthenticationSuccess {
 
-    private Map<String, Integer> counterMap = new HashMap<>();
+    private Map<String, Integer> counterMap;
+
+    public AuthenticationSuccess() {
+        this.counterMap = new HashMap<>();
+    }
 
     @EventListener(AuthenticationSuccessEvent.class)
     public void processAuthenticationSuccessEvent(AbstractAuthenticationEvent event) {
         User name = ((User) event.getAuthentication().getPrincipal());
+        Integer counter=0;
+        counterMap.put(name.getUsername(), counter);
+        for (Map.Entry<String, Integer> entry: counterMap.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println(key + ":" +value);
+        }
     }
 
     public int counterName(Principal principal) {
         String username = principal.getName();
-        Integer licznik = (Integer) counterMap.get(username);
-        if (licznik == null) {
-            licznik = 0;
+       Integer  counter = (Integer) counterMap.get(username);
+        if (counter == null) {
+            counter = 0;
         }
-        licznik++;
-        counterMap.put(username, licznik);
-        return licznik;
+        counter++;
+        counterMap.put(username, counter);
+        return counter;
     }
 }
