@@ -21,7 +21,7 @@ public class AuthenticationSuccess {
     @EventListener(AuthenticationSuccessEvent.class)
     public void processAuthenticationSuccessEvent(AbstractAuthenticationEvent event) {
         User name = ((User) event.getAuthentication().getPrincipal());
-        Integer counter = 0;
+        Integer counter = 1;
         counterMap.put(name.getUsername(), counter);
         for (Map.Entry<String, Integer> entry : counterMap.entrySet()) {
             String key = entry.getKey();
@@ -40,9 +40,9 @@ public class AuthenticationSuccess {
 ////        counterMap.put(username, counter);
 //        return counter;
 
-        long count = counterMap.entrySet().stream()
+        return   counterMap.entrySet().stream()
                 .filter(userMap -> userMap.getKey().equals(principal.getName()))
-                .mapToInt(Map.Entry::getValue).count();
-        return (int)count;
+                .mapToInt(Map.Entry::getValue).findFirst().orElse(0);
+
     }
 }
