@@ -21,23 +21,28 @@ public class AuthenticationSuccess {
     @EventListener(AuthenticationSuccessEvent.class)
     public void processAuthenticationSuccessEvent(AbstractAuthenticationEvent event) {
         User name = ((User) event.getAuthentication().getPrincipal());
-        Integer counter=0;
+        Integer counter = 0;
         counterMap.put(name.getUsername(), counter);
-        for (Map.Entry<String, Integer> entry: counterMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry : counterMap.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            System.out.println(key + ":" +value);
+            System.out.println(key + ":" + value);
         }
     }
 
     public int counterName(Principal principal) {
-        String username = principal.getName();
-       Integer  counter = (Integer) counterMap.get(username);
-        if (counter == null) {
-            counter = 0;
-        }
-        counter++;
-        counterMap.put(username, counter);
-        return counter;
+//        String username = principal.getName();
+//        Integer counter = (Integer) counterMap.get(username);
+//        if (counter == null) {
+//            counter = 0;
+//        }
+//        counter++;
+////        counterMap.put(username, counter);
+//        return counter;
+
+        long count = counterMap.entrySet().stream()
+                .filter(userMap -> userMap.getKey().equals(principal.getName()))
+                .mapToInt(Map.Entry::getValue).count();
+        return (int)count;
     }
 }
