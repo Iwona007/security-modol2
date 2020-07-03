@@ -21,23 +21,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        User userAdmin = new User("Mark",
-                getPasswordEncoder().encode("admin"),
-                Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
-        User userUser = new User("Ela",
-                getPasswordEncoder().encode("user"),
+
+        User userUser = new User("user", getPasswordEncoder().encode("a"),
                 Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
 
-        auth.inMemoryAuthentication().withUser(userAdmin);
+        User admin = new User("admin", getPasswordEncoder().encode("admin"),
+                Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
+
         auth.inMemoryAuthentication().withUser(userUser);
+        auth.inMemoryAuthentication().withUser(admin);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/stranger").permitAll()
+                .antMatchers("user").hasAnyRole("USER", "ADMIN")
                 .and()
                 .formLogin().permitAll()
                 .and()
