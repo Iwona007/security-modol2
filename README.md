@@ -22,18 +22,20 @@ Spring Security,
 
 
 images for login user:
+
 ![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/user-login.PNG)
 
 images for login admin:
+
 ![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/admin-login.PNG)
 
-images for admin,s access:
+images for admin's access:
+
 ![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/admin-user-login.PNG)
 
 images for error because of wrong password:
+
 ![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/login-error.PNG)
 
-
-![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/user-login.PNG)
 
 
