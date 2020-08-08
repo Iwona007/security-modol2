@@ -13,3 +13,27 @@ Kiedy Administrator lub User wejdą na endpoint 3 to dostaną komunikat „Cześ
 Zad 2 – opcjonalne
 Rozbuduj aplikacje, aby dodawała licznik, który będzie weryfikował ile razy dany użytkownik uwierzytelnił się w 
 aplikacji. Wyświetlaj mu ten komunikat 😉
+
+
+Technology:
+Java 11,
+Spring Boot,
+Spring Security,
+
+
+images for login user:
+![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/user-login.PNG)
+
+images for login admin:
+![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/admin-login.PNG)
+
+images for admin,s access:
+![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/admin-user-login.PNG)
+
+images for error because of wrong password:
+![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/login-error.PNG)
+
+
+![img](https://github.com/Iwona007/security-modol2/blob/master/src/main/resources/img/user-login.PNG)
+
+
